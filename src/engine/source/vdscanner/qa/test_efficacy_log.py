@@ -131,6 +131,12 @@ def run_process_and_monitor_response(request, run_on_end):
             time.sleep(1)
         assert Path(log_file).exists(), "The log file does not exists"
 
+        start_time = time.time()
+        # Check socket file exists
+        while not Path(socket_path).exists() and (time.time() - start_time <= 10):
+            time.sleep(1)
+        assert Path(log_file).exists(), "The socket file does not exists."
+
         # Iterate over json files in the test directory, and send through unix socket.
         try:
             # TODO: Fix failing cases
