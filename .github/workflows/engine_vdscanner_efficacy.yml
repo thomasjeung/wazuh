@@ -88,8 +88,8 @@ jobs:
           curl -LO https://packages.wazuh.com/deps/vulnerability_model_database/${vd_filename}
           tar -xf ${vd_filename}
 
-          mkdir -p ${{ env.DATABASE_PATH }}
-          mv queue/* ${{ env.DATABASE_PATH }}
+          sudo mkdir -p ${{ env.DATABASE_PATH }}
+          sudo mv queue/* ${{ env.DATABASE_PATH }}
 
           rm -f ${vd_filename}
 
